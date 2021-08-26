@@ -5,7 +5,7 @@ import Link from "next/link";
 function BlogArticle({ href, title, img, quality, year }) {
   return (
     <div className="w-56 overflow-hidden transition-shadow duration-300 rounded">
-      <Link href={href}>
+      <Link href={href} as={`/${href}`}>
         <a>
           <Image
             src={img}
