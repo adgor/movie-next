@@ -4,9 +4,8 @@ import "tailwindcss/tailwind.css";
 import Blog from "../components/Blog";
 import BlogArticle from "../components/BlogArticle";
 
-export default function Home({ movies }) {
+export default function MoviePage({ movies }) {
   // console.log(movies);
-
   return (
     <div className="bg-gray-400 ">
       <Head>
@@ -19,7 +18,7 @@ export default function Home({ movies }) {
           {movies.map((movie) => (
             <BlogArticle
               key={movie._id}
-              href={movie.tit}
+              href={movie._id}
               quality={movie.quality}
               title={movie.title}
               year={movie.year}
@@ -32,24 +31,29 @@ export default function Home({ movies }) {
   );
 }
 
-export async function getServerSideProps(context) {
+export async function getStaticProps() {
   const { db } = await connectToDatabase();
 
   // const collection = db.collection("movies");
   // const movies = await collection.find({}).toArray();
 
-  const data = await db.collection("movies").find().sort({ _id: 1 }).toArray();
+  const data = await db
+    .collection("movies")
+    .find({ genre: "Aksion" })
+    // .sort({ _id: 1 })
+    .toArray();
 
   const movies = data.map((movie) => {
     return {
       _id: movie._id.toString(),
-      tit: movie.title.toString().replace(/ /g, "-"),
       title: movie.title,
       image: movie.image,
       quality: movie.quality,
       year: movie.year,
     };
   });
+
+  //   console.log(movies);
 
   return {
     props: { movies },

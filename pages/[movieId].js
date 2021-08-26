@@ -20,11 +20,14 @@ export default function MoviePage({ movie }) {
           len={movie.len}
           year={movie.year}
           synopsis={movie.synopsis}
-          genre={movie.genre.map((gen) => (
-            <li>{gen}</li>
+          genre={movie.genre.map((gen, i) => (
+            <li key={i}>{gen}</li>
           ))}
-          actors={movie.actors.map((actor) => (
-            <li className="inline-block px-3 py-px text-xs font-semibold tracking-wider text-teal-900 uppercase bg-indigo-700 rounded">
+          actors={movie.actors.map((actor, i) => (
+            <li
+              key={i}
+              className="inline-block px-3 py-px text-xs font-semibold tracking-wider text-teal-900 uppercase bg-indigo-700 rounded"
+            >
               {actor}
             </li>
           ))}
@@ -38,25 +41,26 @@ export async function getStaticPaths() {
 
   const data = await db.collection("movies");
 
-  const movies = await data.find({}, { _id: 1 }).toArray();
+  const movies = await data.find({}, { title: 1 }).toArray();
 
   return {
     fallback: false,
     paths: movies.map((movie) => ({
-      params: { movieId: movie._id.toString() },
+      params: { movieId: movie.title.toString().replace(/ /g, "-") },
     })),
   };
 }
 
 export async function getStaticProps(context) {
   const movieId = context.params.movieId;
+  // console.log(movieId);
 
-  const { db, ObjectId } = await connectToDatabase();
+  const { db } = await connectToDatabase();
 
   const movieCollection = await db.collection("movies");
 
   const selectedMovie = await movieCollection.findOne({
-    _id: ObjectId(movieId),
+    title: movieId.toString().replace(/-/g, " "),
   });
   // console.log("^^^");
   // console.log(selectedMovie);
@@ -65,7 +69,7 @@ export async function getStaticProps(context) {
   return {
     props: {
       movie: {
-        _id: selectedMovie._id.toString(),
+        // _id: selectedMovie._id.toString(),
         title: selectedMovie.title,
         quality: selectedMovie.quality,
         year: selectedMovie.year,
