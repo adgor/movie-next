@@ -32,7 +32,7 @@ export default function Home({ movies }) {
   );
 }
 
-export async function getServerSideProps(context) {
+export async function getStaticProps(context) {
   const { db } = await connectToDatabase();
 
   // const collection = db.collection("movies");
@@ -53,5 +53,6 @@ export async function getServerSideProps(context) {
 
   return {
     props: { movies },
+    revalidate: 1800,
   };
 }
