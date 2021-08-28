@@ -26,7 +26,7 @@ export default function MoviePage({ movie }) {
           actors={movie.actors.map((actor, i) => (
             <li
               key={i}
-              className="inline-block px-3 py-px text-xs font-semibold tracking-wider text-teal-900 uppercase bg-indigo-700 rounded"
+              className="inline-block px-3 py-px text-xs font-semibold tracking-wider text-teal-900 bg-indigo-700 rounded"
             >
               {actor}
             </li>

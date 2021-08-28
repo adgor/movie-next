@@ -3,41 +3,111 @@ import { connectToDatabase } from "../lib/mongodb";
 import "tailwindcss/tailwind.css";
 import Blog from "../components/Blog";
 import BlogArticle from "../components/BlogArticle";
+import Kot from "../components/Kot";
+import KotSlide from "../components/KotSlide";
+import { SwiperSlide } from "swiper/react";
 
-export default function MoviePage({ drama, aksion }) {
+export default function MoviePage({ aksion, drama, komedi }) {
   // console.log(movies);
   return (
-    <div className="bg-gray-400 ">
+    <div className=" bg-darkGrey">
       <Head>
         <title>Create Next App</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      <main className="flex flex-col px-6 py-10 mx-auto text-white ">
+        {/* Category Slider - Aksion*/}
+        <>
+          <h1 className="pl-2 text-xl font-semibold tracking-wider mt-7">
+            Aksion
+          </h1>
+          <Kot>
+            {aksion.map((movie) => (
+              <SwiperSlide>
+                <KotSlide
+                  key={movie}
+                  href={movie.titURL}
+                  img={movie.image}
+                  quality={movie.quality}
+                  title={movie.title}
+                  year={movie.year}
+                  len={movie.len}
+                  genre={movie.genre.map((gen, i) => (
+                    <li
+                      className="text-xs font-normal leading-4 tracking-wide text-white opacity-50"
+                      key={i}
+                    >
+                      {gen}
+                    </li>
+                  ))}
+                />
+              </SwiperSlide>
+            ))}
+          </Kot>
+          <span className="w-full border-b border-gray-300 opacity-10"></span>
+        </>
 
-      <main className="flex flex-col items-center px-6 py-10 mx-auto dark:text-white lg:flex-row">
-        <Blog>
-          {aksion.map((movie) => (
-            <BlogArticle
-              key={movie}
-              href={movie.titURL}
-              quality={movie.quality}
-              title={movie.title}
-              year={movie.year}
-              img={movie.image}
-            />
-          ))}
-        </Blog>
-        <Blog>
-          {drama.map((movie) => (
-            <BlogArticle
-              key={movie}
-              href={movie.titURL}
-              quality={movie.quality}
-              title={movie.title}
-              year={movie.year}
-              img={movie.image}
-            />
-          ))}
-        </Blog>
+        {/* Category Slider - Drama*/}
+        <>
+          <h1 className="pl-2 text-xl font-semibold tracking-wider mt-7 ">
+            Drama
+          </h1>
+          <Kot>
+            {drama.map((movie) => (
+              <SwiperSlide>
+                <KotSlide
+                  key={movie}
+                  href={movie.titURL}
+                  img={movie.image}
+                  quality={movie.quality}
+                  title={movie.title}
+                  year={movie.year}
+                  len={movie.len}
+                  genre={movie.genre.map((gen, i) => (
+                    <li
+                      className="text-xs font-normal leading-4 tracking-wide text-white opacity-50"
+                      key={i}
+                    >
+                      {gen}
+                    </li>
+                  ))}
+                />
+              </SwiperSlide>
+            ))}
+          </Kot>
+          <span className="w-full border-b border-gray-300 opacity-10"></span>
+        </>
+
+        {/* Category Slider - Drama*/}
+        <>
+          <h1 className="pl-2 text-xl font-semibold tracking-wider mt-7 ">
+            Komedi
+          </h1>
+          <Kot>
+            {komedi.map((movie) => (
+              <SwiperSlide>
+                <KotSlide
+                  key={movie}
+                  href={movie.titURL}
+                  img={movie.image}
+                  quality={movie.quality}
+                  title={movie.title}
+                  year={movie.year}
+                  len={movie.len}
+                  genre={movie.genre.map((gen, i) => (
+                    <li
+                      className="text-xs font-normal leading-4 tracking-wide text-white opacity-50"
+                      key={i}
+                    >
+                      {gen}
+                    </li>
+                  ))}
+                />
+              </SwiperSlide>
+            ))}
+          </Kot>
+          <span className="w-full border-b border-gray-300 opacity-10"></span>
+        </>
       </main>
     </div>
   );
@@ -62,6 +132,7 @@ export async function getStaticProps() {
 
   const getAksion = await data.find({ genre: "Aksion" }).toArray();
   const getDrama = await data.find({ genre: "Dramë" }).toArray();
+  const getKomedi = await data.find({ genre: "Komedi" }).toArray();
 
   const aksion = getAksion.map((movie) => {
     return {
@@ -69,8 +140,10 @@ export async function getStaticProps() {
       titURL: movie.title.toString().replace(/ /g, "-"),
       title: movie.title,
       image: movie.image,
-      quality: movie.quality,
       year: movie.year,
+      len: movie.len,
+      quality: movie.quality,
+      genre: movie.genre,
     };
   });
 
@@ -80,11 +153,25 @@ export async function getStaticProps() {
       titURL: movie.title.toString().replace(/ /g, "-"),
       title: movie.title,
       image: movie.image,
-      quality: movie.quality,
       year: movie.year,
+      len: movie.len,
+      quality: movie.quality,
+      genre: movie.genre,
+    };
+  });
+  const komedi = getKomedi.map((movie) => {
+    return {
+      _id: movie._id.toString(),
+      titURL: movie.title.toString().replace(/ /g, "-"),
+      title: movie.title,
+      image: movie.image,
+      year: movie.year,
+      len: movie.len,
+      quality: movie.quality,
+      genre: movie.genre,
     };
   });
   return {
-    props: { drama, aksion },
+    props: { drama, aksion, komedi },
   };
 }
