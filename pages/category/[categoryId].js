@@ -14,29 +14,43 @@ export default function MovieCategoryPage({ movies }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className="flex flex-col items-center px-6 py-10 mx-auto dark:text-white lg:flex-row">
-        <Blog
-          movieCategory={!!movies[0].category ? movies[0].category : "Kategori"}
-        >
-          {movies.map((movie) => (
-            <BlogArticle
-              key={movie._id}
-              img={movie.image}
-              href={movie.tit}
-              quality={movie.quality}
-              title={movie.title}
-              year={movie.year}
-              len={movie.len}
-              genre={movie.genre.map((gen, i) => (
-                <li
-                  className="text-xs font-normal leading-4 tracking-wide text-white opacity-50"
-                  key={i}
-                >
-                  {gen}
-                </li>
-              ))}
-            />
-          ))}
-        </Blog>
+        {movies.length === 0 ? (
+          <div className="w-screen h-screen text-white opacity-75">
+            <h2 className="mx-auto my-16 text-5xl text-center">
+              Kategoria po perpunohet!
+            </h2>
+            <p className="mx-auto my-4 text-xl text-center">
+              Rikthehuni pas disa oresh!!!! <br />{" "}
+            </p>
+            <p className="mx-auto mt-20 font-semibold text-center">
+              Ju faleminderit për mirekuptimin!{" "}
+            </p>
+          </div>
+        ) : (
+          <Blog
+          // movieCategory={!!movies[0].category ? movies[0].category : "Kategori"}
+          >
+            {movies.map((movie) => (
+              <BlogArticle
+                key={movie._id}
+                img={movie.image}
+                href={movie.tit}
+                quality={movie.quality}
+                title={movie.title}
+                year={movie.year}
+                len={movie.len}
+                genre={movie.genre.map((gen, i) => (
+                  <li
+                    className="text-xs font-normal leading-4 tracking-wide text-white opacity-50"
+                    key={i}
+                  >
+                    {gen}
+                  </li>
+                ))}
+              />
+            ))}
+          </Blog>
+        )}
       </main>
     </div>
   );
