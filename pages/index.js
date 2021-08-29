@@ -146,7 +146,7 @@ export async function getStaticProps() {
   const drama = getDrama.map((movie) => {
     return {
       _id: movie._id.toString(),
-      titURL: movie.title.toString().replace(/ /g, "-"),
+      titURL: movie.title.toString().replace(/ /g, "-") + "/",
       title: movie.title,
       image: movie.image,
       year: movie.year,
