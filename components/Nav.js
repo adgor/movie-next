@@ -31,7 +31,7 @@ export const Nav = () => {
               </svg>
 
               <FaRegPlayCircle
-                className="w-12 h-12 transform -rotate-90"
+                className="w-12 h-12 "
                 style={{ fill: "url(#blue-gradient)" }}
               />
 
@@ -62,9 +62,7 @@ export const Nav = () => {
                   {Links.map((link, i) => (
                     <li key={i} className="py-1">
                       <Link href={link.url}>
-                        <a
-                          className="block text-sm leading-6 tracking-wide text-gray-300 cursor-pointer  hover:text-white"
-                        >
+                        <a className="block text-sm leading-6 tracking-wide text-gray-300 cursor-pointer hover:text-white">
                           {link.name}
                         </a>
                       </Link>

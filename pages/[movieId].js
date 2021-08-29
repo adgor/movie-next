@@ -1,6 +1,7 @@
 import Head from "next/head";
 import { connectToDatabase } from "../lib/mongodb";
 import MovieDetails from "../components/MovieDetails";
+import Link from "next/link";
 
 export default function MoviePage({ movie }) {
   // console.log(movie);
@@ -16,7 +17,7 @@ export default function MoviePage({ movie }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className="flex flex-col items-center px-6 py-10 mx-auto dark:text-white ">
+      <main className="px-6 py-10 mx-auto ">
         <MovieDetails
           embedVid={movie.video}
           title={movie.title}
@@ -25,14 +26,22 @@ export default function MoviePage({ movie }) {
           year={movie.year}
           synopsis={movie.synopsis}
           genre={movie.genre.map((gen, i) => (
-            <li key={i}>{gen}</li>
+            <li
+              className="px-4 py-1 text-xs font-normal leading-4 tracking-wider text-white bg-gray-700 rounded-md "
+              key={i}
+            >
+              <Link href={"/category/" + gen}>
+                <a>{gen}</a>
+              </Link>
+            </li>
           ))}
           actors={movie.actors.map((actor, i) => (
             <li
               key={i}
-              className="inline-block px-3 py-px text-xs font-semibold tracking-wider text-teal-900 bg-indigo-700 rounded"
+              className="flex mb-0.5  flex-row justify-between text-xs font-normal leading-4 tracking-wider  text-white     
+              "
             >
-              {actor}
+              {actor},
             </li>
           ))}
         ></MovieDetails>

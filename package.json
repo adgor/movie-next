@@ -6,6 +6,7 @@
     "start": "next start"
   },
   "dependencies": {
+    "@tailwindcss/aspect-ratio": "^0.2.1",
     "mongodb": "^3.5.9",
     "next": "latest",
     "next-transpile-modules": "^8.0.0",

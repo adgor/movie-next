@@ -26,7 +26,7 @@ export const Footer = () => {
             </svg>
 
             <FaRegPlayCircle
-              className="w-12 h-12 transform -rotate-90"
+              className="w-12 h-12 "
               style={{ fill: "url(#blue-gradient)" }}
             />
 

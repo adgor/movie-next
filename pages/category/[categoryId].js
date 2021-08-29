@@ -4,6 +4,7 @@ import Categories from "../../components/Links";
 
 import Blog from "../../components/Blog";
 import BlogArticle from "../../components/BlogArticle";
+import Link from "next/link";
 
 export default function MovieCategoryPage({ movies }) {
   // console.log(movies);
@@ -41,10 +42,12 @@ export default function MovieCategoryPage({ movies }) {
                 len={movie.len}
                 genre={movie.genre.map((gen, i) => (
                   <li
-                    className="text-xs font-normal leading-4 tracking-wide text-white opacity-50"
+                    className="text-xs font-normal leading-4 tracking-wide text-white opacity-50 hover:opacity-100"
                     key={i}
                   >
-                    {gen}
+                    <Link href={"/category/" + gen}>
+                      <a>{gen}</a>
+                    </Link>
                   </li>
                 ))}
               />

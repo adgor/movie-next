@@ -12,7 +12,11 @@ module.exports = {
     extend: {
       translate: ["active", "group-hover"],
       display: ["group-hover"],
+      aspectRatio: ["responsive", "hover"],
     },
   },
-  plugins: [],
+  plugins: [
+    require("@tailwindcss/aspect-ratio"),
+    // ...
+  ],
 };

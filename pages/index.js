@@ -3,6 +3,7 @@ import { connectToDatabase } from "../lib/mongodb";
 import Kot from "../components/Kot";
 import KotSlide from "../components/KotSlide";
 import { SwiperSlide } from "swiper/react";
+import Link from "next/link";
 
 export default function MoviePage({ aksion, drama, komedi }) {
   // console.log(movies);
@@ -14,6 +15,7 @@ export default function MoviePage({ aksion, drama, komedi }) {
       </Head>
       <main className="flex flex-col px-6 py-10 mx-auto text-white ">
         {/* Category Slider - Aksion*/}
+
         <>
           <h2 className="pl-2 text-xl font-semibold tracking-wider mt-7">
             Aksion
@@ -30,10 +32,12 @@ export default function MoviePage({ aksion, drama, komedi }) {
                   len={movie.len}
                   genre={movie.genre.map((gen, i) => (
                     <li
-                      className="text-xs font-normal leading-4 tracking-wide text-white opacity-50"
+                      className="text-xs font-normal leading-4 tracking-wide text-white opacity-50 hover:opacity-100"
                       key={i}
                     >
-                      {gen}
+                      <Link href={"/category/" + gen}>
+                        <a>{gen}</a>
+                      </Link>
                     </li>
                   ))}
                 />
@@ -61,10 +65,12 @@ export default function MoviePage({ aksion, drama, komedi }) {
                   len={movie.len}
                   genre={movie.genre.map((gen, i) => (
                     <li
-                      className="text-xs font-normal leading-4 tracking-wide text-white opacity-50"
+                      className="text-xs font-normal leading-4 tracking-wide text-white opacity-50 hover:opacity-100"
                       key={i}
                     >
-                      {gen}
+                      <Link href={"/category/" + gen}>
+                        <a>{gen}</a>
+                      </Link>
                     </li>
                   ))}
                 />
@@ -92,10 +98,12 @@ export default function MoviePage({ aksion, drama, komedi }) {
                   len={movie.len}
                   genre={movie.genre.map((gen, i) => (
                     <li
-                      className="text-xs font-normal leading-4 tracking-wide text-white opacity-50"
+                      className="text-xs font-normal leading-4 tracking-wide text-white opacity-50 hover:opacity-100"
                       key={i}
                     >
-                      {gen}
+                      <Link href={"/category/" + gen}>
+                        <a>{gen}</a>
+                      </Link>
                     </li>
                   ))}
                 />
@@ -126,9 +134,18 @@ export async function getStaticProps() {
   // aksion.map(makeGamePlayer);
   // drama.map(makeGamePlayer);
 
-  const getAksion = await data.find({ genre: "Aksion" }).toArray();
-  const getDrama = await data.find({ genre: "Dramë" }).toArray();
-  const getKomedi = await data.find({ genre: "Komedi" }).toArray();
+  const getAksion = await data
+    .find({ genre: "Aksion" })
+    .sort({ _id: -1 })
+    .toArray();
+  const getDrama = await data
+    .find({ genre: "Dramë" })
+    .sort({ _id: -1 })
+    .toArray();
+  const getKomedi = await data
+    .find({ genre: "Komedi" })
+    .sort({ _id: -1 })
+    .toArray();
 
   const aksion = getAksion.map((movie) => {
     return {
