@@ -7,6 +7,11 @@ export default function MoviePage({ movie }) {
   return (
     <div>
       <Head>
+        <meta
+          httpEquiv="Content-Security-Policy"
+          content="upgrade-insecure-requests"
+        />
+
         <title>Create Next App</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
