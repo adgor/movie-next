@@ -1,12 +1,11 @@
 import Head from "next/head";
 import { connectToDatabase } from "../lib/mongodb";
-import "tailwindcss/tailwind.css";
 import MovieDetails from "../components/MovieDetails";
 
 export default function MoviePage({ movie }) {
   // console.log(movie);
   return (
-    <div className="bg-gray-400 ">
+    <div>
       <Head>
         <title>Create Next App</title>
         <link rel="icon" href="/favicon.ico" />

@@ -3,8 +3,9 @@ import { connectToDatabase } from "../lib/mongodb";
 import Blog from "../components/Blog";
 import BlogArticle from "../components/BlogArticle";
 
-export default function MoviePage({ movies }) {
+export default function Home({ movies }) {
   // console.log(movies);
+
   return (
     <div>
       <Head>
@@ -17,7 +18,7 @@ export default function MoviePage({ movies }) {
           {movies.map((movie) => (
             <BlogArticle
               key={movie._id}
-              href={movie._id}
+              href={movie.tit}
               quality={movie.quality}
               title={movie.title}
               year={movie.year}
@@ -30,21 +31,18 @@ export default function MoviePage({ movies }) {
   );
 }
 
-export async function getStaticProps() {
+export async function getStaticProps(context) {
   const { db } = await connectToDatabase();
 
   // const collection = db.collection("movies");
   // const movies = await collection.find({}).toArray();
 
-  const data = await db
-    .collection("movies")
-    .find({ genre: "Aksion" })
-    // .sort({ _id: 1 })
-    .toArray();
+  const data = await db.collection("movies").find().sort({ _id: 1 }).toArray();
 
   const movies = data.map((movie) => {
     return {
       _id: movie._id.toString(),
+      tit: movie.title.toString().replace(/ /g, "-"),
       title: movie.title,
       image: movie.image,
       quality: movie.quality,
@@ -52,9 +50,8 @@ export async function getStaticProps() {
     };
   });
 
-  //   console.log(movies);
-
   return {
     props: { movies },
+    revalidate: 1800,
   };
 }

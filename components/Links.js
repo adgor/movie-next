@@ -2,192 +2,192 @@ export default [
   {
     name: "Aksion",
     category: "Aksion",
-    url: "/Aksion",
+    url: "/category/Aksion",
   },
 
   {
     name: "Animuar",
     category: "Animuar",
-    url: "/Animuar",
+    url: "/category/Animuar",
   },
 
   {
     name: "Aventurë",
     category: "Aventurë",
-    url: "/Aventurë",
+    url: "/category/Aventurë",
   },
 
   {
     name: "Aziatik",
     category: "Aziatik",
-    url: "/Aziatik",
+    url: "/category/Aziatik",
   },
 
   {
     name: "Biografi",
     category: "Biografi",
-    url: "/Biografi",
+    url: "/category/Biografi",
   },
 
   {
     name: "Nordik",
     category: "Nordik",
-    url: "/Nordik",
+    url: "/category/Nordik",
   },
 
   {
     name: "Dokumentar",
     category: "Dokumentar",
-    url: "/Dokumentar",
+    url: "/category/Dokumentar",
   },
 
   {
     name: "Dramë",
     category: "Dramë",
-    url: "/Dramë",
+    url: "/category/Dramë",
   },
 
   {
-    name: "Erotikli",
-    category: "Erotikli",
-    url: "/Erotikli",
+    name: "Erotik",
+    category: "Erotik",
+    url: "/category/Erotik",
   },
 
   {
     name: "Familjar",
     category: "Familjar",
-    url: "/Familjar",
+    url: "/category/Familjar",
   },
 
   {
     name: "Fantashkencë",
     category: "Fantashkencë",
-    url: "/Fantashkencë",
+    url: "/category/Fantashkencë",
   },
 
   {
     name: "Fantazi",
     category: "Fantazi",
-    url: "/Fantazi",
+    url: "/category/Fantazi",
   },
 
   {
     name: "Francez",
     category: "Francez",
-    url: "/Francez",
+    url: "/category/Francez",
   },
 
   {
     name: "Gjerman",
     category: "Gjerman",
-    url: "/Gjerman",
+    url: "/category/Gjerman",
   },
 
   {
     name: "Hindi",
     category: "Hindi",
-    url: "/Hindi",
+    url: "/category/Hindi",
   },
 
   {
     name: "Histori",
     category: "Histori",
-    url: "/Histori",
+    url: "/category/Histori",
   },
 
   {
     name: "Horror",
     category: "Horror",
-    url: "/Horror",
+    url: "/category/Horror",
   },
 
   {
     name: "Italian",
     category: "Italian",
-    url: "/Italian",
+    url: "/category/Italian",
   },
 
   {
     name: "Komedi",
     category: "Komedi",
-    url: "/Komedi",
+    url: "/category/Komedi",
   },
 
   {
     name: "Krim",
     category: "Krim",
-    url: "/Krim",
+    url: "/category/Krim",
   },
 
   {
     name: "Luftë",
     category: "Luftë",
-    url: "/Luftë",
+    url: "/category/Luftë",
   },
 
   {
     name: "Mister",
     category: "Mister",
-    url: "/Mister",
+    url: "/category/Mister",
   },
 
   {
     name: "Muzikë",
     category: "Muzikë",
-    url: "/Muzikë",
+    url: "/category/Muzikë",
   },
 
   {
     name: "NETFLIX",
     category: "NETFLIX",
-    url: "/NETFLIX",
+    url: "/category/NETFLIX",
   },
 
   {
     name: "Romancë",
     category: "Romancë",
-    url: "/Romancë",
+    url: "/category/Romancë",
   },
 
   {
     name: "Rus",
     category: "Rus",
-    url: "/Rus",
+    url: "/category/Rus",
   },
 
   {
     name: "Shqiptar",
     category: "Shqiptar",
-    url: "/Shqiptar",
+    url: "/category/Shqiptar",
   },
 
   {
     name: "Spanjoll",
     category: "Spanjoll",
-    url: "/Spanjoll",
+    url: "/category/Spanjoll",
   },
 
   {
     name: "Sport",
     category: "Sport",
-    url: "/Sport",
+    url: "/category/Sport",
   },
 
   {
     name: "Thriller",
     category: "Thriller",
-    url: "/Thriller",
+    url: "/category/Thriller",
   },
 
   {
     name: "Turk",
     category: "Turk",
-    url: "/Turk",
+    url: "/category/Turk",
   },
 
   {
     name: "Western",
     category: "Western",
-    url: "/Western",
+    url: "/category/Western",
   },
 ];

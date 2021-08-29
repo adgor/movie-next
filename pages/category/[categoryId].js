@@ -1,6 +1,5 @@
 import Head from "next/head";
 import { connectToDatabase } from "../../lib/mongodb";
-import "tailwindcss/tailwind.css";
 import Categories from "../../components/Links";
 
 import Blog from "../../components/Blog";
@@ -9,21 +8,32 @@ import BlogArticle from "../../components/BlogArticle";
 export default function MovieCategoryPage({ movies }) {
   // console.log(movies);
   return (
-    <div className="bg-gray-400 ">
+    <div>
       <Head>
         <title>Create Next App</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className="flex flex-col items-center px-6 py-10 mx-auto dark:text-white lg:flex-row">
-        <Blog>
+        <Blog
+          movieCategory={!!movies[0].category ? movies[0].category : "Kategori"}
+        >
           {movies.map((movie) => (
             <BlogArticle
               key={movie._id}
+              img={movie.image}
               href={movie.tit}
               quality={movie.quality}
               title={movie.title}
               year={movie.year}
-              img={movie.image}
+              len={movie.len}
+              genre={movie.genre.map((gen, i) => (
+                <li
+                  className="text-xs font-normal leading-4 tracking-wide text-white opacity-50"
+                  key={i}
+                >
+                  {gen}
+                </li>
+              ))}
             />
           ))}
         </Blog>
@@ -62,7 +72,10 @@ export async function getStaticProps(context) {
       tit: movie.title.toString().replace(/ /g, "-"),
       title: movie.title,
       image: movie.image,
+      category: categoryId,
+      len: movie.len,
       quality: movie.quality,
+      genre: movie.genre,
       year: movie.year,
     };
   });
