@@ -11,7 +11,7 @@ const withTM = require("next-transpile-modules")([
 
 module.exports = withTM({
   images: {
-    domains: ["www.filma24.ai"],
+    domains: ["www.filma24.ai", "image.tmdb.org"],
   },
   reactStrictMode: true,
 });

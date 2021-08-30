@@ -19,6 +19,7 @@ export default function MoviePage({ movie }) {
 
       <main className="px-6 py-10 mx-auto ">
         <MovieDetails
+          img={movie.bgimage}
           embedVid={movie.video}
           title={movie.title}
           quality={movie.quality}
@@ -35,13 +36,13 @@ export default function MoviePage({ movie }) {
               </Link>
             </li>
           ))}
-          actors={movie.actors.map((actor, i) => (
+          actors={movie.actors.map((actor, i, arr) => (
             <li
               key={i}
-              className="flex mb-0.5  flex-row justify-between text-xs font-normal leading-4 tracking-wider  text-white     
+              className="flex mb-0.5  flex-row justify-between text-xs font-normal leading-4   tracking-tight  text-white     
               "
             >
-              {actor},
+              {actor} {i != arr.length - 1 ? "," : ""}
             </li>
           ))}
         ></MovieDetails>
@@ -89,6 +90,7 @@ export async function getStaticProps(context) {
         genre: selectedMovie.genre,
         actors: selectedMovie.actors,
         video: selectedMovie.video,
+        bgimage: selectedMovie.bgimage,
         synopsis: selectedMovie.synopsis,
         len: selectedMovie.len,
       },

@@ -1,6 +1,9 @@
 import React from "react";
+import Image from "next/image";
+
 export default function MovieDetails({
   embedVid,
+  img,
   title,
   genre,
   actors,
@@ -11,8 +14,16 @@ export default function MovieDetails({
 }) {
   return (
     <>
-      <div className="container px-4 mx-auto my-10 mt-0 lg:px-0">
-        <div className=" aspect-w-16 aspect-h-9">
+      <div className="px-8 mx-auto my-10 mt-0 lg:px-8 ">
+        <div className="z-0 h-full cover">
+          <Image
+            className="bg-fixed bg-blend-luminosity"
+            src={img}
+            layout="fill"
+            objectFit="cover"
+          />
+        </div>
+        <div className="aspect-w-16 aspect-h-9">
           <iframe
             // width="1236"
             // height="695"
@@ -23,8 +34,8 @@ export default function MovieDetails({
             title="Embedded Movie Video"
           />
         </div>
-        <div className="flex flex-col items-center justify-center w-full mt-4 lg:mt-14">
-          <div className="px-8 py-12 mt-4 text-white lg:mt-0 lg:px-12 ">
+        <div className="flex flex-col px-4 py-16 sm:max-w-xl md:max-w-full lg:max-w-screen-xl lg:py-20">
+          <div className="py-12 mt-4 text-white lg:mt-0 ">
             <div className="pb-6 text-6xl font-bold leading-tight border-b border-gray-300 border-opacity-10 ">
               {title}
             </div>
