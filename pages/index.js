@@ -186,5 +186,6 @@ export async function getStaticProps() {
   });
   return {
     props: { drama, aksion, komedi },
+    revalidate: 86400,
   };
 }

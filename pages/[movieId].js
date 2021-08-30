@@ -151,6 +151,6 @@ export async function getStaticProps(context) {
       },
       getLast,
     },
-    revalidate: 3800,
+    revalidate: 86400,
   };
 }
