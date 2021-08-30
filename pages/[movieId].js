@@ -17,36 +17,34 @@ export default function MoviePage({ movie }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className="px-6 py-10 mx-auto ">
-        <MovieDetails
-          img={movie.bgimage}
-          embedVid={movie.video}
-          title={movie.title}
-          quality={movie.quality}
-          len={movie.len}
-          year={movie.year}
-          synopsis={movie.synopsis}
-          genre={movie.genre.map((gen, i) => (
-            <li
-              className="px-4 py-1 text-xs font-normal leading-4 tracking-wider text-white bg-gray-700 rounded-md "
-              key={i}
-            >
-              <Link href={"/category/" + gen}>
-                <a>{gen}</a>
-              </Link>
-            </li>
-          ))}
-          actors={movie.actors.map((actor, i, arr) => (
-            <li
-              key={i}
-              className="flex mb-0.5  flex-row justify-between text-xs font-normal leading-4   tracking-tight  text-white     
+      <MovieDetails
+        img={!movie.bgimage ? "/movie-1.jpg" : movie.bgimage}
+        embedVid={movie.video}
+        title={movie.title}
+        quality={movie.quality}
+        len={movie.len}
+        year={movie.year}
+        synopsis={movie.synopsis}
+        genre={movie.genre.map((gen, i) => (
+          <li
+            className="px-4 py-1 text-xs font-normal leading-4 tracking-wider text-white bg-gray-700 rounded-md "
+            key={i}
+          >
+            <Link href={"/category/" + gen}>
+              <a>{gen}</a>
+            </Link>
+          </li>
+        ))}
+        actors={movie.actors.map((actor, i, arr) => (
+          <li
+            key={i}
+            className="flex mb-0.5  flex-row justify-between text-xs font-normal leading-4   tracking-tight  text-white     
               "
-            >
-              {actor} {i != arr.length - 1 ? "," : ""}
-            </li>
-          ))}
-        ></MovieDetails>
-      </main>
+          >
+            {actor} {i != arr.length - 1 ? "," : ""}
+          </li>
+        ))}
+      ></MovieDetails>
     </div>
   );
 }
@@ -90,11 +88,11 @@ export async function getStaticProps(context) {
         genre: selectedMovie.genre,
         actors: selectedMovie.actors,
         video: selectedMovie.video,
-        bgimage: selectedMovie.bgimage,
+        bgimage: !selectedMovie.bgimage ? "" : selectedMovie.bgimage,
         synopsis: selectedMovie.synopsis,
         len: selectedMovie.len,
       },
     },
-    revalidate: 1,
+    revalidate: 3800,
   };
 }

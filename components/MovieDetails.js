@@ -14,16 +14,12 @@ export default function MovieDetails({
 }) {
   return (
     <>
-      <div className="px-8 mx-auto my-10 mt-0 lg:px-8 ">
-        <div className="z-0 h-full cover">
-          <Image
-            className="bg-fixed bg-blend-luminosity"
-            src={img}
-            layout="fill"
-            objectFit="cover"
-          />
+      <div className="z-50 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8">
+        <div>
+          <Image src={img} layout="fill" objectFit="cover" />
+          <span className="absolute inset-0 w-full h-full bg-gradient-to-t from-darkGrey to-darkGrey-darkest04 "></span>
         </div>
-        <div className="aspect-w-16 aspect-h-9">
+        <div className=" aspect-w-16 aspect-h-9">
           <iframe
             // width="1236"
             // height="695"
@@ -34,7 +30,7 @@ export default function MovieDetails({
             title="Embedded Movie Video"
           />
         </div>
-        <div className="flex flex-col px-4 py-16 sm:max-w-xl md:max-w-full lg:max-w-screen-xl lg:py-20">
+        <div className="flex flex-col sm:max-w-xl md:max-w-full lg:max-w-screen-xl ">
           <div className="py-12 mt-4 text-white lg:mt-0 ">
             <div className="pb-6 text-6xl font-bold leading-tight border-b border-gray-300 border-opacity-10 ">
               {title}

@@ -4,7 +4,22 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        darkGrey: "#202026",
+        darkGrey: {
+          darkest: "#26262d",
+          darkest04: "rgba(38, 38, 45, 0.4)",
+          darkest02: "rgba(38, 38, 45, 0.2)",
+          DEFAULT: "#202026",
+        },
+
+        // bgGrey: {
+        //   dark: '#3c4858',
+        //   DEFAULT: '#c0ccda',
+        //   light: '#e0e6ed',
+        //   lightest: '#f9fafc',
+        // }
+      },
+      zIndex: {
+        "-1": "-1",
       },
     },
   },
