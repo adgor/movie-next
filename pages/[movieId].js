@@ -51,7 +51,7 @@ export default function MoviePage({ movie, getLast }) {
 
         <>
           <h2 className="pl-2 text-lg font-bold tracking-wider text-white mt-7 hover: ">
-            Filma të postuar sl fundmi
+            Filma të postuar së fundmi
           </h2>
           <Kot>
             {getLast.map((movie, i) => (

@@ -29,7 +29,9 @@ export default function MovieCategoryPage({ movies }) {
           </div>
         ) : (
           <Blog
-          // movieCategory={!!movies[0].category ? movies[0].category : "Kategori"}
+            movieCategory={
+              !!movies[0].category ? movies[0].category : "Kategori"
+            }
           >
             {movies.map((movie) => (
               <BlogArticle
