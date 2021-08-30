@@ -19,7 +19,7 @@ function KotSlide({ href, title, img, quality, year, len, genre }) {
         <div className="flex flex-col ">
           <Link href={href} as={`/${href}`}>
             <a>
-              <p className="pb-4 text-sm font-bold leading-6 tracking-wider truncate whitespace-nowrap ">
+              <p className="pb-4 text-sm font-bold leading-6 tracking-wider text-white truncate whitespace-nowrap">
                 {title}
               </p>
             </a>

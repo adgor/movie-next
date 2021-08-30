@@ -1,6 +1,5 @@
 // import Swiper core and required modules
 import { Navigation, Pagination, Scrollbar, A11y } from "swiper";
-
 import { Swiper } from "swiper/react";
 
 // Import Swiper styles
