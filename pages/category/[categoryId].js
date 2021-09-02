@@ -83,6 +83,7 @@ export async function getStaticProps(context) {
     .collection("movies")
     .find({ genre: categoryId })
     // .sort({ _id: 1 })
+    .sort({ _id: -1 })
     .toArray();
 
   const movies = data.map((movie) => {
@@ -103,6 +104,6 @@ export async function getStaticProps(context) {
 
   return {
     props: { movies },
-    revalidate: 86400,
+    revalidate: 32400,
   };
 }

@@ -26,9 +26,9 @@ function KotSlide({ href, title, img, quality, year, len, genre }) {
           </Link>
           <div className="flex flex-row justify-between mb-1 text-xs font-normal leading-4 tracking-wider text-white opacity-50">
             <div className="flex">
-              <p>({year})</p>
-              <span className="px-1 ">•</span>
-              <p>{len}</p>
+              <p>{year}</p>
+
+              <p className=" pl-0.5">{len}</p>
             </div>
             <p>{quality}</p>
           </div>
