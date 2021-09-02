@@ -13,7 +13,7 @@ export default function Kot({ children }) {
     <Swiper
       // install Swiper modules
       modules={[Navigation, Pagination, Scrollbar, A11y]}
-      spaceBetween={30}
+      spaceBetween={16}
       slidesPerView={5}
       navigation={{ clickable: true }}
       onSwiper={(swiper) => console.log(swiper)}

@@ -1,6 +1,7 @@
 import Head from "next/head";
 import { connectToDatabase } from "../lib/mongodb";
 import Kot from "../components/Kot";
+import KotList from "../components/KotList";
 import KotSlide from "../components/KotSlide";
 import { SwiperSlide } from "swiper/react";
 import Link from "next/link";
@@ -14,104 +15,123 @@ export default function MoviePage({ aksion, drama, komedi }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className="flex flex-col px-6 py-10 mx-auto text-white ">
-        {/* Category Slider - Aksion*/}
+        <KotList>
+          {/* Category Slider - Aksion*/}
+          <>
+            <div className="relative">
+              <div>
+                <Link href={"/category/Aksion"}>
+                  <a className="inline-block pl-1 text-xl font-semibold tracking-wider transition duration-700 hover:text-transparent bg-clip-text bg-gradient-to-tl hover:from-blue-700 hover:via-red-700 hover:to-yellow-500 mt-7">
+                    Aksion
+                  </a>
+                </Link>
+              </div>
+              <Kot>
+                {aksion.map((movie, i) => (
+                  <SwiperSlide key={i}>
+                    <KotSlide
+                      href={movie.titURL}
+                      img={movie.image}
+                      quality={movie.quality}
+                      title={movie.title}
+                      year={!movie.year ? "" : `(${movie.year}) •`}
+                      len={movie.len}
+                      genre={movie.genre.map((gen, i) => (
+                        <li
+                          className="text-xs font-normal leading-4 tracking-wide text-white opacity-50 hover:opacity-100"
+                          key={i}
+                        >
+                          <Link href={"/category/" + gen}>
+                            <a>{gen}</a>
+                          </Link>
+                        </li>
+                      ))}
+                    />
+                  </SwiperSlide>
+                ))}
+              </Kot>
+              <span className="absolute w-full border-b border-gray-300 border-opacity-10"></span>
+            </div>
+          </>
 
-        <>
-          <h2 className="pl-2 text-xl font-semibold tracking-wider mt-7">
-            Aksion
-          </h2>
-          <Kot>
-            {aksion.map((movie, i) => (
-              <SwiperSlide key={i}>
-                <KotSlide
-                  href={movie.titURL}
-                  img={movie.image}
-                  quality={movie.quality}
-                  title={movie.title}
-                  year={movie.year}
-                  len={movie.len}
-                  genre={movie.genre.map((gen, i) => (
-                    <li
-                      className="text-xs font-normal leading-4 tracking-wide text-white opacity-50 hover:opacity-100"
-                      key={i}
-                    >
-                      <Link href={"/category/" + gen}>
-                        <a>{gen}</a>
-                      </Link>
-                    </li>
-                  ))}
-                />
-              </SwiperSlide>
-            ))}
-          </Kot>
-          <span className="w-full border-b border-gray-300 border-opacity-10"></span>
-        </>
+          {/* Category Slider - Drama*/}
+          <>
+            <div className="relative ">
+              <div>
+                <Link href={"/category/Dramë"}>
+                  <a className="inline-block pl-1 text-xl font-semibold tracking-wider transition duration-700 hover:text-transparent bg-clip-text bg-gradient-to-tl hover:from-blue-700 hover:via-red-700 hover:to-yellow-500 mt-7">
+                    Drama
+                  </a>
+                </Link>
+              </div>
+              <Kot>
+                {drama.map((movie, i) => (
+                  <SwiperSlide key={i}>
+                    <KotSlide
+                      key={movie.title}
+                      href={movie.titURL}
+                      img={movie.image}
+                      quality={movie.quality}
+                      title={movie.title}
+                      year={!movie.year ? "" : `(${movie.year}) •`}
+                      len={movie.len}
+                      genre={movie.genre.map((gen, i) => (
+                        <li
+                          className="text-xs font-normal leading-4 tracking-wide text-white opacity-50 hover:opacity-100"
+                          key={i}
+                        >
+                          <Link href={"/category/" + gen}>
+                            <a>{gen}</a>
+                          </Link>
+                        </li>
+                      ))}
+                    />
+                  </SwiperSlide>
+                ))}
+              </Kot>
+              <span className="absolute w-full border-b border-gray-300 border-opacity-10"></span>
+            </div>
+          </>
 
-        {/* Category Slider - Drama*/}
-        <>
-          <h2 className="pl-2 text-xl font-semibold tracking-wider mt-7 ">
-            Drama
-          </h2>
-          <Kot>
-            {drama.map((movie, i) => (
-              <SwiperSlide key={i}>
-                <KotSlide
-                  key={movie.title}
-                  href={movie.titURL}
-                  img={movie.image}
-                  quality={movie.quality}
-                  title={movie.title}
-                  year={movie.year}
-                  len={movie.len}
-                  genre={movie.genre.map((gen, i) => (
-                    <li
-                      className="text-xs font-normal leading-4 tracking-wide text-white opacity-50 hover:opacity-100"
-                      key={i}
-                    >
-                      <Link href={"/category/" + gen}>
-                        <a>{gen}</a>
-                      </Link>
-                    </li>
-                  ))}
-                />
-              </SwiperSlide>
-            ))}
-          </Kot>
-          <span className="w-full border-b border-gray-300 border-opacity-10"></span>
-        </>
-
-        {/* Category Slider - Drama*/}
-        <>
-          <h2 className="pl-2 text-xl font-semibold tracking-wider mt-7 ">
-            Komedi
-          </h2>
-          <Kot>
-            {komedi.map((movie, i) => (
-              <SwiperSlide key={i}>
-                <KotSlide
-                  key={movie}
-                  href={movie.titURL}
-                  img={movie.image}
-                  quality={movie.quality}
-                  title={movie.title}
-                  year={movie.year}
-                  len={movie.len}
-                  genre={movie.genre.map((gen, i) => (
-                    <li
-                      className="text-xs font-normal leading-4 tracking-wide text-white opacity-50 hover:opacity-100"
-                      key={i}
-                    >
-                      <Link href={"/category/" + gen}>
-                        <a>{gen}</a>
-                      </Link>
-                    </li>
-                  ))}
-                />
-              </SwiperSlide>
-            ))}
-          </Kot>
-          <span className="w-full border-b border-gray-300 border-opacity-10"></span>
-        </>
+          {/* Category Slider - Komedi*/}
+          <>
+            <div className="relative ">
+              <div>
+                <Link href={"/category/Komedi"}>
+                  <a className="inline-block pl-1 text-xl font-semibold tracking-wider transition duration-700 hover:text-transparent bg-clip-text bg-gradient-to-tl hover:from-blue-700 hover:via-red-700 hover:to-yellow-500 mt-7">
+                    Komedi
+                  </a>
+                </Link>
+              </div>
+              <Kot>
+                {komedi.map((movie, i) => (
+                  <SwiperSlide key={i}>
+                    <KotSlide
+                      key={movie}
+                      href={movie.titURL}
+                      img={movie.image}
+                      quality={movie.quality}
+                      title={movie.title}
+                      year={!movie.year ? "" : `(${movie.year}) •`}
+                      len={movie.len}
+                      genre={movie.genre.map((gen, i) => (
+                        <li
+                          className="text-xs font-normal leading-4 tracking-wide text-white opacity-50 hover:opacity-100"
+                          key={i}
+                        >
+                          <Link href={"/category/" + gen}>
+                            <a>{gen}</a>
+                          </Link>
+                        </li>
+                      ))}
+                    />
+                  </SwiperSlide>
+                ))}
+              </Kot>
+              <span className="absolute w-full border-b border-gray-300 border-opacity-10"></span>
+            </div>
+          </>
+        </KotList>
       </main>
     </div>
   );
