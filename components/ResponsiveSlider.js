@@ -67,16 +67,20 @@ export default function ResponsiveSlider({ data, categoryTitle, href }) {
                 title={movie.title}
                 year={!movie.year ? "" : `(${movie.year}) •`}
                 len={movie.len}
-                genre={movie.genre.map((gen, i) => (
-                  <li
-                    className="text-xs font-normal leading-4 tracking-wide text-white opacity-50 hover:opacity-100"
-                    key={i}
-                  >
-                    <Link href={"/category/" + gen}>
-                      <a>{gen}</a>
-                    </Link>
-                  </li>
-                ))}
+                genre={
+                  !movie.genre
+                    ? ""
+                    : movie.genre.map((gen, i) => (
+                        <li
+                          className="text-xs font-normal leading-4 tracking-wide text-white opacity-50 hover:opacity-100"
+                          key={i}
+                        >
+                          <Link href={"/category/" + gen}>
+                            <a>{gen}</a>
+                          </Link>
+                        </li>
+                      ))
+                }
               />
             </SwiperSlide>
           ))}

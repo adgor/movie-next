@@ -6,10 +6,10 @@ import Link from "next/link";
 import ResponsiveSlider from "./ResponsiveSlider";
 
 export default function SingleMovie({ data, getLast }) {
-  //   console.log(getLast);
+  // console.log(data);
   return (
     <div className="z-50 px-4 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8">
-      {!data.video.length === 0 ? (
+      {data.video === "" ? (
         <div className="relative w-full h-full text-white opacity-75">
           <h2 className="mx-auto my-10 text-5xl text-center">
             Filmi i kërkuar po përpunohet!
@@ -88,14 +88,13 @@ export default function SingleMovie({ data, getLast }) {
               </ul>
             </div>
           </div>
-
-          <ResponsiveSlider
-            data={getLast}
-            // href={"/category/Aksion"}
-            categoryTitle={"Filma të postuar së fundmi"}
-          />
         </>
       )}
+      <ResponsiveSlider
+        data={getLast}
+        // href={"/category/Aksion"}
+        categoryTitle={"Filma të postuar së fundmi"}
+      />
     </div>
   );
 }
