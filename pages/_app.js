@@ -1,5 +1,6 @@
 import "tailwindcss/tailwind.css";
-import "../components/styles.css";
+// import "../components/styles.css";
+import "../components/responsiveStyles.css";
 import "swiper/css/bundle";
 import { Layout } from "../components/Layout";
 

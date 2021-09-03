@@ -1,10 +1,11 @@
 import Head from "next/head";
 import { connectToDatabase } from "../lib/mongodb";
-import Kot from "../components/Kot";
-import KotList from "../components/KotList";
-import KotSlide from "../components/KotSlide";
-import { SwiperSlide } from "swiper/react";
-import Link from "next/link";
+// import Kot from "../components/Kot";
+// import KotSlide from "../components/KotSlide";
+// import { SwiperSlide } from "swiper/react";
+// import Link from "next/link";
+import ResponsiveSlider from "../components/ResponsiveSlider";
+import ResponsiveSliderList from "../components/ResponsiveSliderList";
 
 export default function MoviePage({ aksion, drama, komedi }) {
   // console.log(movies);
@@ -14,10 +15,25 @@ export default function MoviePage({ aksion, drama, komedi }) {
         <title>Create Next App</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className="flex flex-col px-6 py-10 mx-auto text-white ">
-        <KotList>
-          {/* Category Slider - Aksion*/}
-          <>
+      {/* <main className="flex flex-col px-6 py-10 mx-auto text-white "> */}
+      <ResponsiveSliderList>
+        <ResponsiveSlider
+          data={aksion}
+          href={"/category/Aksion"}
+          categoryTitle={"Aksion"}
+        />
+        <ResponsiveSlider
+          data={drama}
+          href={"/category/Dramë"}
+          categoryTitle={"Drama"}
+        />
+        <ResponsiveSlider
+          data={komedi}
+          href={"/category/Komedi"}
+          categoryTitle={"Komedi"}
+        />
+        {/* Category Slider - Aksion*/}
+        {/* <>
             <div className="relative">
               <div>
                 <Link href={"/category/Aksion"}>
@@ -52,10 +68,10 @@ export default function MoviePage({ aksion, drama, komedi }) {
               </Kot>
               <span className="absolute w-full border-b border-gray-300 border-opacity-10"></span>
             </div>
-          </>
+          </> */}
 
-          {/* Category Slider - Drama*/}
-          <>
+        {/* Category Slider - Drama*/}
+        {/* <>
             <div className="relative ">
               <div>
                 <Link href={"/category/Dramë"}>
@@ -91,10 +107,10 @@ export default function MoviePage({ aksion, drama, komedi }) {
               </Kot>
               <span className="absolute w-full border-b border-gray-300 border-opacity-10"></span>
             </div>
-          </>
+          </> */}
 
-          {/* Category Slider - Komedi*/}
-          <>
+        {/* Category Slider - Komedi*/}
+        {/* <>
             <div className="relative ">
               <div>
                 <Link href={"/category/Komedi"}>
@@ -130,9 +146,9 @@ export default function MoviePage({ aksion, drama, komedi }) {
               </Kot>
               <span className="absolute w-full border-b border-gray-300 border-opacity-10"></span>
             </div>
-          </>
-        </KotList>
-      </main>
+          </> */}
+      </ResponsiveSliderList>
+      {/* </main> */}
     </div>
   );
 }

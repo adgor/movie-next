@@ -18,17 +18,19 @@ const CategoryList = ({ data }) => {
             key={movie._id}
             className="w-56 mx-auto overflow-hidden transition-shadow duration-300 rounded sm:mx-0 "
           >
-            <Link href={"/" + movie.tit}>
-              <a>
-                <Image
-                  src={movie.image}
-                  alt={movie.title}
-                  width="228"
-                  height="330"
-                  className="w-full rounded"
-                />
-              </a>
-            </Link>
+            <div className="hover:opacity-75">
+              <Link href={"/" + movie.tit}>
+                <a>
+                  <Image
+                    src={movie.image}
+                    alt={movie.title}
+                    width="228"
+                    height="330"
+                    className="w-full rounded"
+                  />
+                </a>
+              </Link>
+            </div>
             <div className="pt-3.5  pb-7 ">
               <div className="flex flex-col ">
                 <Link href={"/" + movie.tit}>

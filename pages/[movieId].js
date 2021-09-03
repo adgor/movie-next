@@ -78,7 +78,7 @@ export default function MoviePage({ movie, getLast }) {
             {getLast.map((movie, i) => (
               <SwiperSlide key={i}>
                 <KotSlide
-                  href={movie.titURL}
+                  href={"/" + movie.titURL}
                   img={movie.image}
                   quality={movie.quality}
                   title={movie.title}
