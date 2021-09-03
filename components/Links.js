@@ -48,9 +48,9 @@ export default [
   },
 
   {
-    name: "Erotik",
-    category: "Erotik",
-    url: "/category/Erotik",
+    name: "Erotik +18",
+    category: "Erotik +18",
+    url: "/category/Erotik +18",
   },
 
   {

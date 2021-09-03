@@ -68,7 +68,7 @@ export const Nav = () => {
                   <ul className="top-0 grid w-auto grid-flow-col grid-rows-6 gap-6 px-6 py-8 bg-gray-700 rounded shadow">
                     {Links.map((link, i) => (
                       <li key={i} className="py-1">
-                        <Link href={link.url}>
+                        <Link href={link.url.toString().replace(/ /g, "-")}>
                           <a className="block text-sm leading-6 tracking-wide text-gray-300 cursor-pointer hover:text-white">
                             {link.name}
                           </a>
