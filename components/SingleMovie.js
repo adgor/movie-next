@@ -80,7 +80,7 @@ export default function SingleMovie({ data, getLast }) {
                   : data.actors.map((actor, i, arr) => (
                       <li
                         key={i}
-                        className="flex mb-0.5  flex-row justify-between text-xs font-normal leading-4   tracking-tight  text-white"
+                        className="flex mb-0.5 flex-row justify-between text-xs font-normal leading-4 tracking-tight text-white"
                       >
                         {actor} {i != arr.length - 1 ? "," : ""}
                       </li>
@@ -88,13 +88,12 @@ export default function SingleMovie({ data, getLast }) {
               </ul>
             </div>
           </div>
-          <div className="-mx-4 ">
-            <ResponsiveSlider
-              data={getLast}
-              // href={"/category/Aksion"}
-              categoryTitle={"Filma të postuar së fundmi"}
-            />
-          </div>
+
+          <ResponsiveSlider
+            data={getLast}
+            // href={"/category/Aksion"}
+            categoryTitle={"Filma të postuar së fundmi"}
+          />
         </>
       )}
     </div>

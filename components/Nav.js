@@ -38,11 +38,11 @@ export const Nav = () => {
                 </svg>
 
                 <FaRegPlayCircle
-                  className="w-12 h-12 "
+                  className="w-8 h-8 "
                   style={{ fill: "url(#blue-gradient)" }}
                 />
 
-                <span className="ml-2 text-xl font-bold tracking-wide text-gray-300 uppercase hover:text-white ">
+                <span className="ml-3 text-xl font-bold tracking-wide text-gray-300 uppercase hover:text-white ">
                   MOVIE-APP
                 </span>
               </a>
