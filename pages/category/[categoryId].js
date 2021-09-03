@@ -30,7 +30,7 @@ export async function getStaticPaths() {
 
 export async function getStaticProps(context) {
   const categoryId = context.params.categoryId;
-  console.log(categoryId);
+  // console.log(categoryId);
   const { db } = await connectToDatabase();
 
   // const collection = db.collection("movies");

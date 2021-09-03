@@ -5,6 +5,7 @@ import Link from "next/link";
 import Kot from "../components/Kot";
 import KotSlide from "../components/KotSlide";
 import { SwiperSlide } from "swiper/react";
+import SingleMovie from "../components/SingleMovie";
 
 export default function MoviePage({ movie, getLast }) {
   // console.log(movie);
@@ -19,9 +20,10 @@ export default function MoviePage({ movie, getLast }) {
         <title>Create Next App</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      <SingleMovie data={movie} getLast={getLast} />
+      {/* <SingleMovie data={getLast} /> */}
 
-      <div className="z-50 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8">
-        {movie.video.length === 0 ? (
+      {/* {movie.video.length === 0 ? (
           <div className="relative w-full h-full text-white opacity-75">
             <h2 className="mx-auto my-10 text-5xl text-center">
               Filmi i kërkuar po përpunohet!
@@ -69,8 +71,8 @@ export default function MoviePage({ movie, getLast }) {
                   ))
             }
           />
-        )}
-        <>
+        )} */}
+      {/* <>
           <h2 className="pl-2 text-lg font-bold tracking-wider text-white mt-7 hover: ">
             Filma të postuar së fundmi
           </h2>
@@ -103,8 +105,7 @@ export default function MoviePage({ movie, getLast }) {
             ))}
           </Kot>
           <span className="w-full border-b border-gray-300 border-opacity-10"></span>
-        </>
-      </div>
+        </> */}
     </div>
   );
 }

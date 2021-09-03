@@ -7,7 +7,7 @@ import { connectToDatabase } from "../lib/mongodb";
 import ResponsiveSlider from "../components/ResponsiveSlider";
 import ResponsiveSliderList from "../components/ResponsiveSliderList";
 
-export default function MoviePage({ aksion, drama, komedi }) {
+export default function HomePage({ aksion, drama, komedi }) {
   // console.log(movies);
   return (
     <div>
