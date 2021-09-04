@@ -109,20 +109,6 @@ export default function MoviePage({ movie, getLast }) {
     </div>
   );
 }
-export async function getStaticPaths() {
-  const { db } = await connectToDatabase();
-
-  const data = await db.collection("movies");
-
-  const movies = await data.find({}, { title: 1 }).toArray();
-
-  return {
-    fallback: false,
-    paths: movies.map((movie) => ({
-      params: { movieId: movie.title.toString().replace(/ /g, "-") },
-    })),
-  };
-}
 
 export async function getStaticProps(context) {
   const movieId = context.params.movieId;
@@ -185,6 +171,21 @@ export async function getStaticProps(context) {
       },
       getLast,
     },
-    revalidate: 32400,
+    revalidate: 1,
+  };
+}
+
+export async function getStaticPaths() {
+  const { db } = await connectToDatabase();
+
+  const data = await db.collection("movies");
+
+  const movies = await data.find({}, { title: 1 }).toArray();
+
+  return {
+    fallback: false,
+    paths: movies.map((movie) => ({
+      params: { movieId: movie.title.toString().replace(/ /g, "-") },
+    })),
   };
 }

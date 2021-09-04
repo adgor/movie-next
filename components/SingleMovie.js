@@ -44,8 +44,8 @@ export default function SingleMovie({ data, getLast }) {
             />
           </div>
           <div className="relative flex flex-col sm:max-w-xl md:max-w-full lg:max-w-screen-xl ">
-            <div className="py-12 mt-4 text-white lg:mt-0 ">
-              <div className="pb-6 text-6xl font-bold leading-tight border-b border-gray-300 border-opacity-10 ">
+            <div className="pb-4 text-white sm:pt-10 ">
+              <div className="pb-6 text-4xl font-bold leading-tight border-b border-gray-300 sm:text-6xl border-opacity-10 ">
                 {data.title}
               </div>
               <div className=" py-9">

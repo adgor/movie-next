@@ -7,8 +7,15 @@ import { connectToDatabase } from "../lib/mongodb";
 import ResponsiveSlider from "../components/ResponsiveSlider";
 import ResponsiveSliderList from "../components/ResponsiveSliderList";
 
-export default function HomePage({ aksion, drama, komedi }) {
-  // console.log(movies);
+export default function HomePage({
+  aksion,
+  drama,
+  horror,
+  komedi,
+  thriller,
+  aventurë,
+}) {
+  // console.log(aksion.length);
   return (
     <div>
       <Head>
@@ -23,14 +30,29 @@ export default function HomePage({ aksion, drama, komedi }) {
           categoryTitle={"Aksion"}
         />
         <ResponsiveSlider
+          data={komedi}
+          href={"/category/Komedi"}
+          categoryTitle={"Komedi"}
+        />
+        <ResponsiveSlider
+          data={horror}
+          href={"/category/Horror"}
+          categoryTitle={"Horror"}
+        />
+        <ResponsiveSlider
           data={drama}
           href={"/category/Dramë"}
           categoryTitle={"Drama"}
         />
         <ResponsiveSlider
-          data={komedi}
-          href={"/category/Komedi"}
-          categoryTitle={"Komedi"}
+          data={aventurë}
+          href={"/category/Aventurë"}
+          categoryTitle={"Aventurë"}
+        />
+        <ResponsiveSlider
+          data={thriller}
+          href={"/category/Thriller"}
+          categoryTitle={"Thriller"}
         />
         {/* Category Slider - Aksion*/}
         {/* <>
@@ -158,6 +180,19 @@ export async function getStaticProps() {
 
   const data = await db.collection("movies");
 
+  // function to get category movies call it in the props
+  async function asyncGetCategory(categoryName) {
+    const result = await data
+      .find({ genre: categoryName })
+      .sort({ _id: -1 })
+      .limit(20)
+      .toArray();
+    return result;
+    // console.log(result);
+
+    // expected output: "resolved"
+  }
+
   // working this method with below function
   // const drama = await data
   // .find({ genre: "Dramë" }, { projection: { _id: 0 } })
@@ -170,58 +205,103 @@ export async function getStaticProps() {
   // aksion.map(makeGamePlayer);
   // drama.map(makeGamePlayer);
 
-  const getAksion = await data
-    .find({ genre: "Aksion" })
-    .sort({ _id: -1 })
-    .toArray();
-  const getDrama = await data
-    .find({ genre: "Dramë" })
-    .sort({ _id: -1 })
-    .toArray();
-  const getKomedi = await data
-    .find({ genre: "Komedi" })
-    .sort({ _id: -1 })
-    .toArray();
+  // const aksion = await data
+  //   .find({ genre: "Aksion" })
+  //   .sort({ _id: -1 })
+  //   .limit(20)
+  //   .toArray();
 
-  const aksion = getAksion.map((movie) => {
-    return {
-      _id: movie._id.toString(),
-      titURL: movie.title.toString().replace(/ /g, "-"),
-      title: movie.title,
-      image: movie.image,
-      year: movie.year,
-      len: movie.len,
-      quality: movie.quality,
-      genre: movie.genre,
-    };
-  });
+  // const drama = await data
+  //   .find({ genre: "Dramë" })
+  //   .sort({ _id: -1 })
+  //   .limit(20)
+  //   .toArray();
+  // const horror = await data
+  //   .find({ genre: "Horror" })
+  //   .sort({ _id: -1 })
+  //   .limit(20)
+  //   .toArray();
+  // const komedi = await data
+  //   .find({ genre: "Komedi" })
+  //   .sort({ _id: -1 })
+  //   .limit(20)
+  //   .toArray();
+  // const thriller = await data
+  //   .find({ genre: "Thriller" })
+  //   .sort({ _id: -1 })
+  //   .limit(20)
+  //   .toArray();
 
-  const drama = getDrama.map((movie) => {
-    return {
-      _id: movie._id.toString(),
-      titURL: movie.title.toString().replace(/ /g, "-"),
-      title: movie.title,
-      image: movie.image,
-      year: movie.year,
-      len: movie.len,
-      quality: movie.quality,
-      genre: movie.genre,
-    };
-  });
-  const komedi = getKomedi.map((movie) => {
-    return {
-      _id: movie._id.toString(),
-      titURL: movie.title.toString().replace(/ /g, "-"),
-      title: movie.title,
-      image: movie.image,
-      year: movie.year,
-      len: movie.len,
-      quality: movie.quality,
-      genre: movie.genre,
-    };
-  });
+  // const aksion = getAksion.map((movie) => {
+  //   return {
+  //     _id: movie._id.toString(),
+  //     titURL: movie.title.toString().replace(/ /g, "-"),
+  //     title: movie.title,
+  //     image: movie.image,
+  //     year: movie.year,
+  //     len: movie.len,
+  //     quality: movie.quality,
+  //     genre: movie.genre,
+  //   };
+  // });
+
+  // const drama = getDrama.map((movie) => {
+  //   return {
+  //     _id: movie._id.toString(),
+  //     titURL: movie.title.toString().replace(/ /g, "-"),
+  //     title: movie.title,
+  //     image: movie.image,
+  //     year: movie.year,
+  //     len: movie.len,
+  //     quality: movie.quality,
+  //     genre: movie.genre,
+  //   };
+  // });
+  // const horror = getHorror.map((movie) => {
+  //   return {
+  //     _id: movie._id.toString(),
+  //     titURL: movie.title.toString().replace(/ /g, "-"),
+  //     title: movie.title,
+  //     image: movie.image,
+  //     year: movie.year,
+  //     len: movie.len,
+  //     quality: movie.quality,
+  //     genre: movie.genre,
+  //   };
+  // });
+  // const komedi = getKomedi.map((movie) => {
+  //   return {
+  //     _id: movie._id.toString(),
+  //     titURL: movie.title.toString().replace(/ /g, "-"),
+  //     title: movie.title,
+  //     image: movie.image,
+  //     year: movie.year,
+  //     len: movie.len,
+  //     quality: movie.quality,
+  //     genre: movie.genre,
+  //   };
+  // });
+  // const thriller = getThriller.map((movie) => {
+  //   return {
+  //     _id: movie._id.toString(),
+  //     titURL: movie.title.toString().replace(/ /g, "-"),
+  //     title: movie.title,
+  //     image: movie.image,
+  //     year: movie.year,
+  //     len: movie.len,
+  //     quality: movie.quality,
+  //     genre: movie.genre,
+  //   };
+  // });
   return {
-    props: { drama, aksion, komedi },
+    props: {
+      aksion: JSON.parse(JSON.stringify(await asyncGetCategory("Aksion"))),
+      drama: JSON.parse(JSON.stringify(await asyncGetCategory("Dramë"))),
+      horror: JSON.parse(JSON.stringify(await asyncGetCategory("Horror"))),
+      komedi: JSON.parse(JSON.stringify(await asyncGetCategory("Komedi"))),
+      thriller: JSON.parse(JSON.stringify(await asyncGetCategory("Thriller"))),
+      aventurë: JSON.parse(JSON.stringify(await asyncGetCategory("Aventurë"))),
+    },
     revalidate: 32400,
   };
 }
