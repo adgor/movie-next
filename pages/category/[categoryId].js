@@ -22,7 +22,7 @@ export async function getStaticPaths() {
 
   return {
     paths: Categories.map((category) => ({
-      params: { categoryId: category.category.toString().replace(/ /g, "-") },
+      params: { categoryId: category.category.toString().replace(/ /g, "_") },
     })),
     fallback: false,
   };
@@ -38,7 +38,7 @@ export async function getStaticProps(context) {
 
   const data = await db
     .collection("movies")
-    .find({ genre: categoryId.toString().replace(/-/g, " ") })
+    .find({ genre: categoryId.toString().replace(/_/g, " ") })
     // .sort({ _id: 1 })
     .sort({ _id: -1 })
     .toArray();
@@ -46,7 +46,7 @@ export async function getStaticProps(context) {
   const movies = data.map((movie) => {
     return {
       _id: movie._id.toString(),
-      tit: movie.title.toString().replace(/ /g, "-"),
+      tit: movie.title.toString().replace(/ /g, "_"),
       title: movie.title,
       image: movie.image,
       category: categoryId,

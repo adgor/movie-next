@@ -120,8 +120,9 @@ export async function getStaticProps(context) {
 
   // get Single Movie
   const selectedMovie = await movieCollection.findOne({
-    title: movieId.toString().replace(/-/g, " "),
+    title: movieId.toString().replace(/_/g, " "),
   });
+
   // console.log("^^^");
   // console.log(selectedMovie);
   // console.log("^^^");
@@ -137,8 +138,9 @@ export async function getStaticProps(context) {
   const getLast = getLastMovies.map((movie) => {
     return {
       _id: movie._id.toString(),
-      titURL: movie.title.toString().replace(/ /g, "-"),
-      title: movie.title,
+      // titURL: movie.title.toString().replace(/ /g, "-"),
+      title: movie.title === null ? "" : movie.title,
+      // title: movie.title,
       image: movie.image,
       year: !movie.year ? "" : movie.year,
       len: !movie.len ? "" : movie.len,
@@ -155,6 +157,7 @@ export async function getStaticProps(context) {
       movie: {
         // _id: selectedMovie._id.toString(),
         title: selectedMovie.title,
+        // title: !selectedMovie.title ? "" : selectedMovie.title,
         quality: selectedMovie.quality,
         year: !selectedMovie.year ? "" : selectedMovie.year,
         genre: !selectedMovie.genre ? "" : selectedMovie.genre,
@@ -185,7 +188,9 @@ export async function getStaticPaths() {
   return {
     fallback: false,
     paths: movies.map((movie) => ({
-      params: { movieId: movie.title.toString().replace(/ /g, "-") },
+      params: {
+        movieId: movie.title.toString().replace(/ /g, "_"),
+      },
     })),
   };
 }

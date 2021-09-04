@@ -54,8 +54,9 @@ export default function HomePage({
           href={"/category/Thriller"}
           categoryTitle={"Thriller"}
         />
-        {/* Category Slider - Aksion*/}
-        {/* <>
+      </ResponsiveSliderList>
+      {/* Category Slider - Aksion*/}
+      {/* <>
             <div className="relative">
               <div>
                 <Link href={"/category/Aksion"}>
@@ -92,8 +93,8 @@ export default function HomePage({
             </div>
           </> */}
 
-        {/* Category Slider - Drama*/}
-        {/* <>
+      {/* Category Slider - Drama*/}
+      {/* <>
             <div className="relative ">
               <div>
                 <Link href={"/category/Dramë"}>
@@ -131,8 +132,8 @@ export default function HomePage({
             </div>
           </> */}
 
-        {/* Category Slider - Komedi*/}
-        {/* <>
+      {/* Category Slider - Komedi*/}
+      {/* <>
             <div className="relative ">
               <div>
                 <Link href={"/category/Komedi"}>
@@ -169,7 +170,6 @@ export default function HomePage({
               <span className="absolute w-full border-b border-gray-300 border-opacity-10"></span>
             </div>
           </> */}
-      </ResponsiveSliderList>
       {/* </main> */}
     </div>
   );
@@ -302,6 +302,6 @@ export async function getStaticProps() {
       thriller: JSON.parse(JSON.stringify(await asyncGetCategory("Thriller"))),
       aventurë: JSON.parse(JSON.stringify(await asyncGetCategory("Aventurë"))),
     },
-    revalidate: 32400,
+    revalidate: 600,
   };
 }

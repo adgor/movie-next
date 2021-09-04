@@ -61,7 +61,7 @@ export default function ResponsiveSlider({ data, categoryTitle, href }) {
           {data.map((movie, i) => (
             <SwiperSlide key={i}>
               <KotSlide
-                href={"/" + movie.title.replace(/ /g, "-")}
+                href={"/" + movie.title.replace(/ /g, "_")}
                 img={movie.image}
                 quality={movie.quality}
                 title={movie.title}
@@ -75,7 +75,7 @@ export default function ResponsiveSlider({ data, categoryTitle, href }) {
                           className="text-xs font-normal leading-4 tracking-wide text-white opacity-50 hover:opacity-100"
                           key={i}
                         >
-                          <Link href={"/category/" + gen.replace(/ /g, "-")}>
+                          <Link href={"/category/" + gen.replace(/ /g, "_")}>
                             <a>{gen}</a>
                           </Link>
                         </li>
