@@ -1,14 +1,34 @@
 import Head from "next/head";
 import { connectToDatabase } from "../lib/mongodb";
-import MovieDetails from "../components/MovieDetails";
-import Link from "next/link";
-import Kot from "../components/Kot";
-import KotSlide from "../components/KotSlide";
-import { SwiperSlide } from "swiper/react";
+import { useRouter } from "next/router";
+// import MovieDetails from "../components/MovieDetails";
+// import Link from "next/link";
+// import Kot from "../components/Kot";
+// import KotSlide from "../components/KotSlide";
+// import { SwiperSlide } from "swiper/react";
 import SingleMovie from "../components/SingleMovie";
 
 export default function MoviePage({ movie, getLast }) {
   // console.log(movie);
+  // if (!movie && !getLast) return "The URL does not Exists ...";
+  const { isFallback } = useRouter();
+  if (isFallback) {
+    return (
+      <>
+        <div className="relative text-white opacity-75 h-80">
+          <h2 className="mx-auto my-10 text-5xl text-center">
+            Faqja që Ju kërkuat nuk egziston!
+          </h2>
+          <p className="mx-auto text-xl text-center">
+            Ju lutemi kontrolloni e nji herë ose kthehuni te Ballina!!!! <br />{" "}
+          </p>
+          <p className="mx-auto mt-4 font-semibold text-center">
+            Ju faleminderit për mirekuptimin!{" "}
+          </p>
+        </div>
+      </>
+    );
+  }
   return (
     <div>
       <Head>
@@ -174,7 +194,7 @@ export async function getStaticProps(context) {
       },
       getLast,
     },
-    revalidate: 1,
+    revalidate: 36000,
   };
 }
 
@@ -186,11 +206,11 @@ export async function getStaticPaths() {
   const movies = await data.find({}, { title: 1 }).toArray();
 
   return {
-    fallback: false,
     paths: movies.map((movie) => ({
       params: {
         movieId: movie.title.toString().replace(/ /g, "_"),
       },
     })),
+    fallback: true,
   };
 }
