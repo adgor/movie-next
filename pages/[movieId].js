@@ -1,15 +1,12 @@
 import Head from "next/head";
 import { connectToDatabase } from "../lib/mongodb";
 import { useRouter } from "next/router";
-// import MovieDetails from "../components/MovieDetails";
-// import Link from "next/link";
-// import Kot from "../components/Kot";
-// import KotSlide from "../components/KotSlide";
-// import { SwiperSlide } from "swiper/react";
 import SingleMovie from "../components/SingleMovie";
 
 export default function MoviePage({ movie, getLast }) {
   // console.log(movie);
+
+  // When fallback true if no url
   // if (!movie && !getLast) return "The URL does not Exists ...";
   const { isFallback } = useRouter();
   if (isFallback) {
@@ -41,91 +38,6 @@ export default function MoviePage({ movie, getLast }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <SingleMovie data={movie} getLast={getLast} />
-      {/* <SingleMovie data={getLast} /> */}
-
-      {/* {movie.video.length === 0 ? (
-          <div className="relative w-full h-full text-white opacity-75">
-            <h2 className="mx-auto my-10 text-5xl text-center">
-              Filmi i kërkuar po përpunohet!
-            </h2>
-            <p className="mx-auto text-xl text-center">
-              Rikthehuni pas disa oresh!!!! <br />{" "}
-            </p>
-            <p className="mx-auto mt-4 mb-10 font-semibold text-center">
-              Ju faleminderit për mirekuptimin!{" "}
-            </p>
-          </div>
-        ) : (
-          <MovieDetails
-            img={!movie.bgimage ? "/movie-1.jpg" : movie.bgimage}
-            embedVid={movie.video}
-            title={movie.title}
-            quality={movie.quality}
-            len={movie.len}
-            year={movie.year}
-            synopsis={movie.synopsis}
-            genre={
-              !movie.genre
-                ? ""
-                : movie.genre.map((gen, i) => (
-                    <li
-                      className="px-4 py-1 text-xs font-normal leading-4 tracking-wider text-white bg-gray-700 rounded-md "
-                      key={i}
-                    >
-                      <Link href={"/category/" + gen}>
-                        <a>{gen}</a>
-                      </Link>
-                    </li>
-                  ))
-            }
-            actors={
-              !movie.actors
-                ? ""
-                : movie.actors.map((actor, i, arr) => (
-                    <li
-                      key={i}
-                      className="flex mb-0.5  flex-row justify-between text-xs font-normal leading-4   tracking-tight  text-white"
-                    >
-                      {actor} {i != arr.length - 1 ? "," : ""}
-                    </li>
-                  ))
-            }
-          />
-        )} */}
-      {/* <>
-          <h2 className="pl-2 text-lg font-bold tracking-wider text-white mt-7 hover: ">
-            Filma të postuar së fundmi
-          </h2>
-          <Kot>
-            {getLast.map((movie, i) => (
-              <SwiperSlide key={i}>
-                <KotSlide
-                  href={"/" + movie.titURL}
-                  img={movie.image}
-                  quality={movie.quality}
-                  title={movie.title}
-                  year={!movie.year ? "" : `(${movie.year}) •`}
-                  len={movie.len}
-                  genre={
-                    !movie.genre
-                      ? ""
-                      : movie.genre.map((gen, i) => (
-                          <li
-                            className="text-xs font-normal leading-4 tracking-wide text-white opacity-50 hover:opacity-100"
-                            key={i}
-                          >
-                            <Link href={"/category/" + gen}>
-                              <a>{gen}</a>
-                            </Link>
-                          </li>
-                        ))
-                  }
-                />
-              </SwiperSlide>
-            ))}
-          </Kot>
-          <span className="w-full border-b border-gray-300 border-opacity-10"></span>
-        </> */}
     </div>
   );
 }
@@ -136,7 +48,7 @@ export async function getStaticProps(context) {
 
   const { db } = await connectToDatabase();
 
-  const movieCollection = await db.collection("movies");
+  const movieCollection = await db.collection("test");
 
   // get Single Movie
   const selectedMovie = await movieCollection.findOne({
@@ -201,7 +113,7 @@ export async function getStaticProps(context) {
 export async function getStaticPaths() {
   const { db } = await connectToDatabase();
 
-  const data = await db.collection("movies");
+  const data = await db.collection("test");
 
   const movies = await data.find({}, { title: 1 }).toArray();
 

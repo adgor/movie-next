@@ -49,16 +49,6 @@ export const Nav = () => {
             </Link>
 
             <ul className="flex items-center hidden space-x-2 lg:flex">
-              <li>
-                <a
-                  href="#objectives"
-                  aria-label="Project objectives"
-                  title="Project objectives"
-                  className="px-3 py-2 text-sm font-medium tracking-wide text-gray-300 transition-colors duration-200 rounded-md hover:bg-gray-700 hover:text-white "
-                >
-                  Objectives
-                </a>
-              </li>
               <li className="relative px-3 py-2 text-sm font-medium tracking-wide text-gray-300 transition-colors duration-200 rounded-md cursor-pointer group dropdown hover:bg-gray-700 hover:text-white">
                 <a>Kategoritë</a>
                 <div className="absolute z-50 hidden h-auto py-3 -ml-3 group-hover:block dropdown-menu">
@@ -68,7 +58,7 @@ export const Nav = () => {
                   <ul className="top-0 grid w-auto grid-flow-col grid-rows-6 gap-6 px-6 py-8 bg-gray-700 rounded shadow">
                     {Links.map((link, i) => (
                       <li key={i} className="py-1">
-                        <Link href={link.url.toString().replace(/ /g, "-")}>
+                        <Link href={link.url.toString().replace(/ /g, "_")}>
                           <a className="block text-sm leading-6 tracking-wide text-gray-300 cursor-pointer hover:text-white">
                             {link.name}
                           </a>
@@ -78,27 +68,7 @@ export const Nav = () => {
                   </ul>
                 </div>
               </li>
-              <li>
-                <a
-                  href="#institutions"
-                  aria-label="Institutions involved"
-                  title="Institutions involved"
-                  className="px-3 py-2 text-sm font-medium tracking-wide text-gray-300 transition-colors duration-200 rounded-md hover:bg-gray-700 hover:text-white "
-                >
-                  Institutions
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#team"
-                  aria-label="Our team"
-                  title="Our team"
-                  className="px-3 py-2 text-sm font-medium tracking-wide text-gray-300 transition-colors duration-200 rounded-md hover:bg-gray-700 hover:text-white "
-                >
-                  Team
-                </a>
-              </li>
-              <li>
+              {/* <li>
                 <a
                   href="/"
                   aria-label="About us"
@@ -107,16 +77,16 @@ export const Nav = () => {
                 >
                   About us
                 </a>
-              </li>
+              </li> */}
             </ul>
           </div>
-
+          {/* mobile Menu */}
           <div className="lg:hidden">
             <button
               aria-label="Open Menu"
               title="Open Menu"
-              className="p-2 -mr-1 transition duration-200 rounded focus:outline-none focus:shadow-outline hover:bg-deep-purple-50 focus:bg-deep-purple-50"
               onClick={() => setIsMenuOpen(true)}
+              className="p-2 -mr-1 transition duration-200 rounded focus:outline-none focus:shadow-outline hover:bg-deep-purple-50 focus:bg-deep-purple-50"
             >
               <svg className="w-5 text-gray-600" viewBox="0 0 24 24">
                 <path
@@ -134,38 +104,40 @@ export const Nav = () => {
               </svg>
             </button>
             {isMenuOpen && (
-              <div className="absolute top-0 left-0 w-full">
-                <div className="p-5 border rounded shadow-sm">
+              <div className="absolute top-0 left-0 w-full rounded shadow-2xl bg-darkGrey-darkest">
+                <div className="p-5 ">
                   <div className="flex items-center justify-between mb-4">
                     <div>
-                      <a
-                        href="/"
-                        aria-label="Company"
-                        title="Company"
-                        className="inline-flex items-center"
-                      >
-                        <svg width="0" height="0">
-                          <linearGradient
-                            id="blue-gradient"
-                            x1="100%"
-                            y1="100%"
-                            x2="0%"
-                            y2="0%"
-                          >
-                            <stop stopColor="#ffa700" offset="0%" />
-                            <stop stopColor="#d62d20" offset="45%" />
-                            <stop stopColor="#0057e7" offset="85%" />
-                          </linearGradient>
-                        </svg>
+                      <Link href="/">
+                        <a
+                          aria-label="Company"
+                          title="Company"
+                          className="inline-flex items-center mr-8 text-5xl font-extrabold "
+                        >
+                          <svg width="0" height="0">
+                            <linearGradient
+                              id="blue-gradient"
+                              x1="100%"
+                              y1="100%"
+                              x2="0%"
+                              y2="0%"
+                            >
+                              <stop stopColor="#ffa700" offset="0%" />
+                              <stop stopColor="#d62d20" offset="45%" />
+                              <stop stopColor="#0057e7" offset="85%" />
+                            </linearGradient>
+                          </svg>
 
-                        <FaRegPlayCircle
-                          className="transform -rotate-90 w-11 h-11"
-                          style={{ fill: "url(#blue-gradient)" }}
-                        />
-                        <span className="ml-2 text-2xl font-bold tracking-wide text-gray-800 uppercase">
-                          IPA-FF NMK
-                        </span>
-                      </a>
+                          <FaRegPlayCircle
+                            className="w-8 h-8 "
+                            style={{ fill: "url(#blue-gradient)" }}
+                          />
+
+                          <span className="ml-3 text-xl font-bold tracking-wide text-gray-300 uppercase hover:text-white ">
+                            MOVIE-APP
+                          </span>
+                        </a>
+                      </Link>
                     </div>
                     <div>
                       <button
@@ -185,46 +157,41 @@ export const Nav = () => {
                   </div>
                   <nav>
                     <ul className="space-y-4">
-                      <li>
-                        <a
-                          href="#objectives"
-                          aria-label="Project objectives"
-                          title="Project objectives"
-                          className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
-                        >
-                          Objectives
-                        </a>
+                      <li className="relative px-3 py-2 text-sm font-medium tracking-wide text-gray-300 transition-colors duration-200 rounded-md cursor-pointer group dropdown hover:bg-gray-700 hover:text-white">
+                        <a>Kategoritë</a>
+                        <div className="absolute z-50 hidden w-auto h-auto py-3 -mx-5 group-hover:block dropdown-menu">
+                          <div className="inline-block ml-10 -mb-2 overflow-hidden">
+                            <div className="w-3 h-3 origin-bottom-left transform rotate-45 bg-gray-700 "></div>
+                          </div>
+                          <ul className="top-0 grid w-full grid-flow-row grid-cols-3 gap-2 px-6 py-8 bg-gray-700 rounded shadow sm:grid-cols-5 md:grid-cols-8">
+                            {Links.map((link, i) => (
+                              <li key={i} className="py-1">
+                                <Link
+                                  href={link.url.toString().replace(/ /g, "_")}
+                                >
+                                  <a className="block text-sm leading-6 tracking-wide text-gray-300 cursor-pointer hover:text-white">
+                                    <button
+                                      onClick={() => setIsMenuOpen(false)}
+                                    >
+                                      {link.name}
+                                    </button>
+                                  </a>
+                                </Link>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
                       </li>
-                      <li>
-                        <a
-                          href="#institutions"
-                          aria-label="Institutions involved"
-                          title="Institutions involved"
-                          className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
-                        >
-                          Institutions
-                        </a>
-                      </li>
-                      <li>
-                        <a
-                          href="#team"
-                          aria-label="Our team"
-                          title="Our team"
-                          className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
-                        >
-                          Team
-                        </a>
-                      </li>
-                      <li>
-                        <a
-                          href="/"
-                          aria-label="About us"
-                          title="About us"
-                          className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
-                        >
-                          About us
-                        </a>
-                      </li>
+                      {/* <li>
+                <a
+                  href="/"
+                  aria-label="About us"
+                  title="About us"
+                  className="px-3 py-2 text-sm font-medium tracking-wide text-gray-300 transition-colors duration-200 rounded-md hover:bg-gray-700 hover:text-white "
+                >
+                  About us
+                </a>
+              </li> */}
                     </ul>
                   </nav>
                 </div>

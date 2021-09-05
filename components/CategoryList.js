@@ -13,10 +13,10 @@ const CategoryList = ({ data }) => {
             Kategoria e kërkuar po përpunohet!
           </h2>
           <p className="mx-auto text-xl text-center">
-            Rikthehuni pas disa oresh!!!! <br />{" "}
+            Rikthehuni pas disa oresh!!!! <br />
           </p>
           <p className="mx-auto mt-4 font-semibold text-center">
-            Ju faleminderit për mirekuptimin!{" "}
+            Ju faleminderit për mirekuptimin!
           </p>
         </div>
       ) : (

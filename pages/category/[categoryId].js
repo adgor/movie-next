@@ -37,7 +37,7 @@ export async function getStaticProps(context) {
   // const movies = await collection.find({}).toArray();
 
   const data = await db
-    .collection("movies")
+    .collection("test")
     .find({ genre: categoryId.toString().replace(/_/g, " ") })
     // .sort({ _id: 1 })
     .sort({ _id: -1 })

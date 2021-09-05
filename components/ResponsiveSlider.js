@@ -22,10 +22,10 @@ SwiperCore.use([Navigation]);
 export default function ResponsiveSlider({ data, categoryTitle, href }) {
   return (
     <>
-      <div className="relative mx-auto">
+      <div className="relative mx-auto mb-6 sm:mb-0">
         <div className="text-center sm:text-left">
           {!href === 0 || "undefined" ? (
-            <p className="inline-block  mb-3.5 mt-8 pl-1 text-2xl sm:text-xl font-semibold tracking-wider text-white transition duration-700 hover:text-transparent bg-clip-text bg-gradient-to-tl hover:from-blue-700 hover:via-red-700 hover:to-yellow-500 ">
+            <p className="inline-block  mb-3.5 sm:mt-8 pl-1 text-2xl sm:text-xl font-semibold tracking-wider text-white transition duration-700 hover:text-transparent bg-clip-text bg-gradient-to-tl hover:from-blue-700 hover:via-red-700 hover:to-yellow-500 ">
               {categoryTitle}
             </p>
           ) : (
@@ -38,7 +38,7 @@ export default function ResponsiveSlider({ data, categoryTitle, href }) {
         </div>
         <Swiper
           slidesPerView={1}
-          spaceBetween={10}
+          // spaceBetween={10}
           navigation={{
             clickable: true,
           }}
