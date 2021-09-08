@@ -48,7 +48,7 @@ export async function getStaticProps(context) {
 
   const { db } = await connectToDatabase();
 
-  const movieCollection = await db.collection("movies");
+  const movieCollection = await db.collection("test");
 
   // get Single Movie
   const selectedMovie = await movieCollection.findOne({
@@ -113,7 +113,7 @@ export async function getStaticProps(context) {
 export async function getStaticPaths() {
   const { db } = await connectToDatabase();
 
-  const data = await db.collection("movies");
+  const data = await db.collection("test");
 
   const movies = await data.find({}, { title: 1 }).toArray();
 
