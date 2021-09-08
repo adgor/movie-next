@@ -58,7 +58,7 @@ export default function HomePage({
 export async function getStaticProps(context) {
   const { db } = await connectToDatabase();
 
-  const data = await db.collection("test");
+  const data = await db.collection("movies");
 
   // function to get category movies call it in the props
   async function asyncGetCategory(categoryName) {
