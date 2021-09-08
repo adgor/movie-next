@@ -33,11 +33,8 @@ export async function getStaticProps(context) {
   // console.log(categoryId);
   const { db } = await connectToDatabase();
 
-  // const collection = db.collection("movies");
-  // const movies = await collection.find({}).toArray();
-
   const data = await db
-    .collection("test")
+    .collection("movies")
     .find({ genre: categoryId.toString().replace(/_/g, " ") })
     // .sort({ _id: 1 })
     .sort({ _id: -1 })
@@ -46,7 +43,6 @@ export async function getStaticProps(context) {
   const movies = data.map((movie) => {
     return {
       _id: movie._id.toString(),
-      tit: movie.title.toString().replace(/ /g, "_"),
       title: movie.title,
       image: movie.image,
       category: categoryId,
@@ -61,6 +57,6 @@ export async function getStaticProps(context) {
 
   return {
     props: { movies },
-    revalidate: 36000,
+    revalidate: 82800,
   };
 }

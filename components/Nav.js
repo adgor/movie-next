@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Link from "next/link";
 import { FaRegPlayCircle } from "react-icons/fa";
 import Links from "../components/Links";
+import Search from "../components/Search";
 
 export const Nav = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -21,7 +22,7 @@ export const Nav = () => {
               <a
                 aria-label="Company"
                 title="Company"
-                className="inline-flex items-center mr-8 text-5xl font-extrabold "
+                className="inline-flex items-center text-5xl font-extrabold sm:mr-8 "
               >
                 <svg width="0" height="0">
                   <linearGradient
@@ -42,7 +43,7 @@ export const Nav = () => {
                   style={{ fill: "url(#blue-gradient)" }}
                 />
 
-                <span className="ml-3 text-xl font-bold tracking-wide text-gray-300 uppercase hover:text-white ">
+                <span className="ml-3 text-lg font-bold tracking-wide text-gray-300 uppercase sm:text-xl hover:text-white ">
                   MOVIE-APP
                 </span>
               </a>
@@ -80,15 +81,18 @@ export const Nav = () => {
               </li> */}
             </ul>
           </div>
+          <div className="mx-auto sm:mx-0 ">
+            <Search />
+          </div>
           {/* mobile Menu */}
           <div className="lg:hidden">
             <button
               aria-label="Open Menu"
               title="Open Menu"
               onClick={() => setIsMenuOpen(true)}
-              className="p-2 -mr-1 transition duration-200 rounded focus:outline-none focus:shadow-outline hover:bg-deep-purple-50 focus:bg-deep-purple-50"
+              className="p-2 -mr-1 transition duration-200 rounded focus:outline-none focus:shadow-outline hover:bg-darkGrey "
             >
-              <svg className="w-5 text-gray-600" viewBox="0 0 24 24">
+              <svg className="w-5 text-gray-600 " viewBox="0 0 24 24">
                 <path
                   fill="currentColor"
                   d="M23,13H1c-0.6,0-1-0.4-1-1s0.4-1,1-1h22c0.6,0,1,0.4,1,1S23.6,13,23,13z"

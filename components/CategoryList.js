@@ -3,10 +3,10 @@ import MovieCategoryPage from "../pages/category/[categoryId]";
 import Link from "next/link";
 import Image from "next/image";
 
-const CategoryList = ({ data }) => {
+const CategoryList = ({ data, resSearchTitle }) => {
   // console.log(data);
   return (
-    <div className="px-4 pt-10 pb-4 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 ">
+    <div className="px-4 pb-4 mx-auto sm:pt-10 sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 ">
       {data.length === 0 ? (
         <div className="relative text-white opacity-75 h-80">
           <h2 className="mx-auto my-10 text-5xl text-center">
@@ -21,11 +21,13 @@ const CategoryList = ({ data }) => {
         </div>
       ) : (
         <>
-          <div className="relative pb-10 text-center sm:text-left ">
+          <div className="relative pb-5 text-center sm:pb-10 sm:text-left ">
             <h2 className="text-3xl font-bold tracking-wider text-white sm:text-6xl">
-              {!data[0].category
-                ? "Kategori"
-                : data[0].category.replace(/-/g, " ")}
+              {!resSearchTitle
+                ? !data[0].category
+                  ? "Kategori"
+                  : data[0].category.replace(/-/g, " ")
+                : resSearchTitle}
             </h2>
           </div>
           <div className="grid gap-5 mx-auto border-b border-gray-300 border-opacity-10 sm:grid-cols-2 lg:grid-cols-5 sm:max-w-xl md:max-w-full lg:max-w-screen-xlg:max-w-full">
@@ -35,7 +37,7 @@ const CategoryList = ({ data }) => {
                 className="w-56 mx-auto overflow-hidden transition-shadow duration-300 rounded sm:mx-0 "
               >
                 <div className="hover:opacity-75">
-                  <Link href={"/" + movie.tit}>
+                  <Link href={"/" + movie.title.toString().replace(/ /g, "_")}>
                     <a>
                       <Image
                         src={movie.image}
@@ -49,7 +51,9 @@ const CategoryList = ({ data }) => {
                 </div>
                 <div className="pt-3.5  pb-7 ">
                   <div className="flex flex-col ">
-                    <Link href={"/" + movie.tit}>
+                    <Link
+                      href={"/" + movie.title.toString().replace(/ /g, "_")}
+                    >
                       <a>
                         <p className="pb-4 text-sm font-bold leading-6 tracking-wider text-white truncate transition duration-700 hover:text-transparent bg-clip-text bg-gradient-to-tl hover:from-blue-700 hover:via-red-700 hover:to-yellow-500 whitespace-nowrap ">
                           {movie.title}

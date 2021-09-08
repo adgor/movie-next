@@ -2,7 +2,15 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 
-function KotSlide({ href, title, img, quality, year, len, genre }) {
+function ResponsiveSliderSingle({
+  href,
+  title,
+  img,
+  quality,
+  year,
+  len,
+  genre,
+}) {
   return (
     <div className="w-56 overflow-hidden transition-shadow duration-300 rounded">
       <div className="relative transition duration-500 ease-in-out transform rounded hover:-translate-y-1 hover:scale-110 ">
@@ -42,4 +50,4 @@ function KotSlide({ href, title, img, quality, year, len, genre }) {
   );
 }
 
-export default KotSlide;
+export default ResponsiveSliderSingle;

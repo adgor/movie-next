@@ -14,7 +14,7 @@ import "swiper/css/navigation";
 
 // import Swiper core and required modules
 import SwiperCore, { Navigation } from "swiper";
-import KotSlide from "./KotSlide";
+import ResponsiveSliderSingle from "./ResponsiveSliderSingle";
 
 // install Swiper modules
 SwiperCore.use([Navigation]);
@@ -24,7 +24,7 @@ export default function ResponsiveSlider({ data, categoryTitle, href }) {
     <>
       <div className="relative mx-auto mb-6 sm:mb-0">
         <div className="text-center sm:text-left">
-          {!href === 0 || "undefined" ? (
+          {!href ? (
             <p className="inline-block  mb-3.5 sm:mt-8 pl-1 text-2xl sm:text-xl font-semibold tracking-wider text-white transition duration-700 hover:text-transparent bg-clip-text bg-gradient-to-tl hover:from-blue-700 hover:via-red-700 hover:to-yellow-500 ">
               {categoryTitle}
             </p>
@@ -60,7 +60,7 @@ export default function ResponsiveSlider({ data, categoryTitle, href }) {
         >
           {data.map((movie, i) => (
             <SwiperSlide key={i}>
-              <KotSlide
+              <ResponsiveSliderSingle
                 href={"/" + movie.title.replace(/ /g, "_")}
                 img={movie.image}
                 quality={movie.quality}

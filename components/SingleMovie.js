@@ -80,9 +80,15 @@ export default function SingleMovie({ data, getLast }) {
                   : data.actors.map((actor, i, arr) => (
                       <li
                         key={i}
-                        className="flex mb-0.5 flex-row justify-between text-xs font-normal leading-4 tracking-tight text-white"
+                        className="flex mb-0.5 flex-row justify-between text-xs font-normal leading-4 tracking-tight text-white opacity-50 hover:opacity-100 "
                       >
-                        {actor} {i != arr.length - 1 ? "," : ""}
+                        <Link
+                          href={"/search/?term=" + actor.replace(/ /g, "-")}
+                        >
+                          <a>
+                            {actor} {i != arr.length - 1 ? "," : ""}
+                          </a>
+                        </Link>
                       </li>
                     ))}
               </ul>
